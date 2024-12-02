@@ -82,7 +82,9 @@ export default function AddProductForm({ onProductAdded }) {
       }
     } catch (error) {
       console.error("Error al crear producto:", error.response || error.message);
-      setError("Error al crear el producto. Verifica los datos.");
+      setError(
+        error.response?.data?.message || "Error al crear el producto. Verifica los datos."
+      );
     }
   };
 

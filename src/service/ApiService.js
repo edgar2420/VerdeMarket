@@ -206,13 +206,10 @@ export const ApiService = {
       handleError(error);
     }
   },
-  createPago: async (pagoData) => {
+  createProducto: async (productoData) => {
     try {
-      // Enviar los datos del pago para que el backend cree el PaymentIntent
-      const response = await axios.post(`${API_URL}/pagos`, pagoData);
-
-      // Devuelves el PaymentIntentId y el clientSecret para completar el pago desde el frontend
-      return response.data;  // { paymentIntentId, clientSecret }
+      const response = await axios.post(`${API_URL}/productos`, productoData);
+      return response.data;
     } catch (error) {
       handleError(error);
     }
