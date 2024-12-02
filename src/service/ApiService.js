@@ -86,9 +86,14 @@ export const ApiService = {
   },
   createProducto: async (productoData) => {
     try {
-      const response = await axios.post(`${API_URL}/productos`, productoData, {
+      const formData = new FormData();
+      for (const key in productoData) {
+        formData.append(key, productoData[key]);
+      }
+      
+      const response = await axios.post(`${API_URL}/productos`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       return response.data;
